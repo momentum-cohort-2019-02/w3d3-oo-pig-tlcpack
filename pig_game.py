@@ -4,13 +4,13 @@ import random
 class HumanPlayer():
     """Creating the human player for Pig game"""
     # i think this may be too many attributes for init statement
-    def __init__(self, roll_choice, dice_roll, rolls_this_turn, current_turn_score, overall_score, computer_score):
-        self.roll_choice = roll_choice
-        self.dice_roll = dice_roll
-        self.rolls_this_turn = rolls_this_turn
-        self.current_turn_score = current_turn_score
+    def __init__(self, overall_score):
+        # self.roll_choice = roll_choice
+        # self.dice_roll = dice_roll
+        # self.rolls_this_turn = rolls_this_turn
+        # self.current_turn_score = current_turn_score
         self.overall_score = overall_score
-        self.computer_score = computer_score
+        # self.computer_score = computer_score
 
     def roll_choice(self):
         """User chooses if they want to roll"""
@@ -38,6 +38,14 @@ class HumanPlayer():
         self.overall_score += self.current_turn_score
         print(self.overall_score)
         return self.overall_score
+
+class Dice():
+    def __init__(self, sides):
+        self.sides = sides
+
+    def roll_dice(self):
+        self.dice_roll = random.randint(0,self.sides)
+        return self.dice_roll
 
 
 
