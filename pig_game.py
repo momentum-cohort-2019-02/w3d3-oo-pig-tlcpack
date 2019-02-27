@@ -9,7 +9,7 @@ class HumanPlayer():
         # self.die_roll = die_roll
         # self.rolls_this_turn = rolls_this_turn
         # self.current_turn_score = current_turn_score
-        self.overall_score = overall_score
+        self.overall_score = 0
         # self.computer_score = computer_score
 
     def roll_choice(self):
@@ -61,13 +61,15 @@ class ComPlayer():
         self.overall_score = overall_score
         # self.computer_score = computer_score
 
-    def roll_dice(self, roll_choice):
-        """User rolls dice"""
-        if current_turn_score < 20:   
+    def roll_die(self):
+        """Computer rolls dice"""
+        while current_turn_score < 20:   
             self.die_roll = random.randint(0,6)
-            print(die_roll)
+            print(self.die_roll)
             self.rolls_this_turn += 1
             print(self.rolls_this_turn)
+            self.current_turn_score += self.die_roll
+            print(self.current_turn_score)
             return self.die_roll
 
     
@@ -84,5 +86,27 @@ class ComPlayer():
         return self.overall_score
 
 class Game():
+    """creating the game"""
+
+    def __init__(self, human_player, computer_player):
+        self.human_player = human_player
+        self.computer_player = computer_player
+        self.human_total_score = 0
+        self.computer_total_score = 0
+
+    def run_game(self):
+        computer_score = computer_player.current_turn_score(roll_die)
+        self.computer_total_score += computer_score
+        human_score = human_player.current_turn_score(roll_die)
+        self.human_total_score += human_score
+
+        if human_total_score >= 100:
+            print("The human wins!")
+        if computer_total_score >= 100:
+            print("The computer wins!")
+
+
+
+
 
 
