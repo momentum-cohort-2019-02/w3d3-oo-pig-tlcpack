@@ -115,6 +115,7 @@ class Game():
                 break
             else:
                 current_roll = self.roll_die
+                print(current_roll)
                 if current_roll == 1:
                     self.human_player.current_turn_score == 0
                     break
