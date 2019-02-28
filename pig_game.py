@@ -3,7 +3,7 @@ import random
 
 class HumanPlayer():
     """Creating the human player for Pig game"""
-    # i think this may be too many attributes for init statement
+    
     def __init__(self):
         # self.roll_choice = roll_choice
         # self.die_roll = die_roll
@@ -34,6 +34,7 @@ class HumanPlayer():
     def current_turn_score(self, die_roll):
         """Adding dice roll score to current turn score"""
         self.current_turn_score = 0
+        
         self.current_turn_score += die_roll
         return self.current_turn_score
     
@@ -43,6 +44,7 @@ class HumanPlayer():
         print(self.overall_score)
         return self.overall_score
 
+## not using die here, thought I would need it during original design
 class Die():
     """Creating the die"""
 
@@ -100,20 +102,45 @@ class Game():
         self.roll_die = random.randint(0,6)
 
     def run_game(self):
-        computer_score = self.computer_player.current_turn_score(self.roll_die)
-        self.computer_total_score += computer_score
-        human_score = self.human_player.current_turn_score(self.roll_die)
-        self.human_total_score += human_score
+        # computer_score = self.computer_player.current_turn_score(self.roll_die)
+        # self.computer_total_score += computer_score
+        # human_score = self.human_player.current_turn_score(self.roll_die)
+        # self.human_total_score += human_score
+
+        roll_choice = ''
+        while True:
+            roll_choice = input("Would you like to roll? (y/n): ")
+            if roll_choice == 'n':
+                self.human_player.overall_score(self.human_total_score, self.human_player.current_turn_score)
+                break
+            else:
+                current_roll = self.roll_die
+                if current_roll == 1:
+                    self.human_player.current_turn_score == 0
+                    break
+                else:
+                    self.human_player.current_turn_score(current_roll)
+
+        while True:
+            current_roll = self.roll_die
+            if current_roll == 1:
+                self.computer_player.current_turn_score == 0
+                break
+            elif self.computer_player.current_turn_score >= 20:
+                self.computer_player.overall_score(self.computer_total_score, self.computer_player.current_turn_score)
+                break
+            else:
+                self.computer_player.current_turn_score(current_roll)
 
         while self.human_total_score >= 100 or self.computer_total_score >= 100:
-            self.human_player.roll_choice(self)
+            
 
 
 
-        if self.human_total_score >= 100:
-            print("The human wins!")
-        if self.computer_total_score >= 100:
-            print("The computer wins!")
+            if self.human_total_score >= 100:
+                print("The human wins!")
+            if self.computer_total_score >= 100:
+                print("The computer wins!")
 
 
 if __name__ == "__main__":
