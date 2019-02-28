@@ -8,6 +8,7 @@ HumanPlayer
 - take turn
 
 Dice
+- sides
 - roll - collab with HumanPlayer & ComPlayer
 - return score
 
@@ -18,5 +19,6 @@ ComputerPlayer
 - take turn
 
 Game
+- decide who starts
 - roll dice - collab with dice
 - end game - collab with HumanPlayer & ComPlayer (their scores)
